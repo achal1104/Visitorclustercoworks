@@ -8,9 +8,9 @@ export const fmt = (v) => new Date(v).toLocaleString('en-IN',{dateStyle:'medium'
 
 export const nowLocal = () => { const d=new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,16) }
 
-// Mobile number is deliberately NOT encoded. In production encode only registrationId and verify via backend.
-export const qrPayload = (d) => JSON.stringify({
-  registrationId:d.id, name:d.name, visitorCount:d.count, personToMeet:d.meet, visitDateTime:d.when })
+// Compact payload keeps the QR small (fewer modules = easy to scan). Mobile number is deliberately NOT encoded.
+// Keys: id=registrationId, n=name, c=visitorCount, m=personToMeet, t=visitDateTime
+export const qrPayload = (d) => JSON.stringify({ id:d.id, n:d.name, c:d.count, m:d.meet, t:d.when })
 
 export const validate = (f) => {
   const e = {}
