@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Field, Button, Err, Icon } from './ui'
-import { validate, nowLocal, EMPLOYEES } from '../utils/helpers'
+import DateTimeField from './DateTimeField'
+import { validate, EMPLOYEES } from '../utils/helpers'
 
 export default function VisitorRegistration({ form, setForm, onNext }) {
   const [err, setErr] = useState({})
@@ -23,7 +24,7 @@ export default function VisitorRegistration({ form, setForm, onNext }) {
       </div>
       <Field id="meet" label="Whom Do You Want to Meet?" icon="brief" placeholder="Type a name or pick from the list" list="emp" value={form.meet} error={err.meet} onChange={(e) => set('meet', e.target.value)} />
       <datalist id="emp">{EMPLOYEES.map((x) => <option key={x} value={x} />)}</datalist>
-      <Field id="when" label="Visit Date & Time" icon="cal" type="datetime-local" min={nowLocal()} value={form.when} error={err.when} onChange={(e) => set('when', e.target.value)} />
+      <DateTimeField id="when" value={form.when} error={err.when} onChange={(v) => set('when', v)} />
       <div className="fld">
         <label className={'chk' + (err.agree ? ' bad' : '')}>
           <input type="checkbox" checked={form.agree} onChange={(e) => set('agree', e.target.checked)} />

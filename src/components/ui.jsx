@@ -1,5 +1,5 @@
-import { User, Phone, Users, Briefcase, CalendarDays, Check, AlertCircle, Plus, Minus, ArrowRight, ArrowLeft, Download, Printer, ShieldCheck, RotateCcw } from 'lucide-react'
-const MAP = { user:User, phone:Phone, users:Users, brief:Briefcase, cal:CalendarDays, check:Check, alert:AlertCircle, plus:Plus, minus:Minus, arrow:ArrowRight, back:ArrowLeft, dl:Download, print:Printer, shield:ShieldCheck, rot:RotateCcw }
+import { User, Phone, Users, Briefcase, CalendarDays, Check, AlertCircle, Plus, Minus, ArrowRight, ArrowLeft, Download, Printer, ShieldCheck, RotateCcw, ChevronLeft, ChevronRight, Clock, X } from 'lucide-react'
+const MAP = { user:User, phone:Phone, users:Users, brief:Briefcase, cal:CalendarDays, check:Check, alert:AlertCircle, plus:Plus, minus:Minus, arrow:ArrowRight, back:ArrowLeft, dl:Download, print:Printer, shield:ShieldCheck, rot:RotateCcw, left:ChevronLeft, right:ChevronRight, clock:Clock, x:X }
 
 export const Icon = ({ n, s = 18 }) => { const C = MAP[n]; return <C size={s} aria-hidden="true" /> }
 export const Logo = () => <div className="logo">CC</div>

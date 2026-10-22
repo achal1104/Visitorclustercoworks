@@ -3,6 +3,7 @@ import QRCodeBox from './QRCodeBox'
 import VisitorPass from './VisitorPass'
 import { Icon, Button, DetailRow } from './ui'
 import { fmt, qrPayload } from '../utils/helpers'
+import { buildPassImage } from '../utils/passImage'
 
 export default function VisitorSuccess({ d, onReset }) {
   const canvasRef = useRef(null)
@@ -10,7 +11,7 @@ export default function VisitorSuccess({ d, onReset }) {
   const value = qrPayload(d)
   const download = () => {
     const a = document.createElement('a')
-    a.href = canvasRef.current.toDataURL('image/png'); a.download = d.id + '.png'; a.click()
+    a.href = buildPassImage(d, canvasRef.current, fmt(d.when)); a.download = d.id + '.png'; a.click()
   }
   return (
     <div className="ctr">
@@ -25,7 +26,7 @@ export default function VisitorSuccess({ d, onReset }) {
         <DetailRow icon="cal" k="Visit Time" v={fmt(d.when)} />
       </div>
       <div className="btns">
-        <Button icon="dl" onClick={download}>Download QR Code</Button>
+        <Button icon="dl" onClick={download}>Download QR Pass</Button>
         <Button kind="dark" icon="print" onClick={() => setPass(true)}>Print Visitor Pass</Button>
         <Button kind="ghost" icon="rot" onClick={onReset}>Register Another Visitor</Button>
       </div>
